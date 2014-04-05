@@ -38,3 +38,21 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use therubyracer
+gem 'therubyracer'
+
+# Use devise
+gem 'devise'
+
+# Use role_model
+gem 'role_model'
+
+# Para los forms
+#gem 'formalize-rails' No compatible con rails v-4.0.0
+gem 'formtastic' 
+
+#Para utilizar Cron Jobs en Rails
+gem 'whenever', :require => false
+
+#Para enviar correos
+gem "mail"
