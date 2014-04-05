@@ -12,6 +12,18 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :mail %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :contrasena %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmar_contrasena %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
     <%= f.label :role %><br>
     <%= f.text_field :role %>
   </div>
