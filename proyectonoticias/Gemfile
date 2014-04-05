@@ -41,8 +41,9 @@ gem 'spring',        group: :development
 # Use therubyracer
 gem 'therubyracer'
 
-# Use devise
+# Use devise y cancan permisologia
 gem 'devise'
+gem 'cancan'
 
 # Use role_model
 gem 'role_model'
@@ -56,3 +57,10 @@ gem 'whenever', :require => false
 
 #Para enviar correos
 gem "mail"
+gem "letter_opener", :group => :development
+
+# Attachments in models
+gem 'paperclip', '~> 3.5'
+
+# Twitter bootstrap
+gem 'twitter-bootstrap-rails'
