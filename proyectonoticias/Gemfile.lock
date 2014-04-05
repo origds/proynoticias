@@ -44,6 +44,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    commonjs (0.2.7)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -54,6 +55,8 @@ GEM
     execjs (2.0.2)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    formtastic-bootstrap (3.0.0)
+      formtastic (>= 2.2)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.0.5)
@@ -65,6 +68,11 @@ GEM
     json (1.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
+    less (2.5.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.5.0)
+      actionpack (>= 3.1)
+      less (~> 2.5.0)
     letter_opener (1.2.0)
       launchy (~> 2.2)
     libv8 (3.16.14.3)
@@ -159,8 +167,10 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   formtastic
+  formtastic-bootstrap
   jbuilder (~> 2.0)
   jquery-rails
+  less-rails
   letter_opener
   mail
   paperclip (~> 3.5)
