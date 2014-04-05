@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
   # GET /reports/1
   # GET /reports/1.json
   def show
-    if @report.viewed == false && current_user.role == 'Admin'
+    if @report.viewed == false && current_user.role == 'admin'
       @report.viewed = true
       @report.save 
     end
@@ -83,7 +83,7 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
-    if @report.approved == false || current_user.role == "Admin" ||
+    if @report.approved == false || current_user.role == 'admin' ||
         (@report.approved == false && current_user.id == @report.user_id)
       @report.destroy
       respond_to do |format|
