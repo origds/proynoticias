@@ -1,0 +1,22 @@
+<h1>Aprobadas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:700px">Titulo</th>
+      <th>Usuario</th>
+      <th>Ver</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.title %></td>
+      <td><%= User.find(report.user_id).email %></td>
+      <td><%= link_to '◉', report %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

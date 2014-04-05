@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :password, :password_confirmation, :role)}
   end
 
+  def is_owner
+    redirect_to(home_index_path) if current_user.role != "admin" && current_user.id.to_s != params[:id]
+  end
+
+  def is_admin
+    redirect_to(home_index_path) if current_user.role != "admin"
+  end
+
 end

@@ -44,7 +44,6 @@ table th {
 table tr td {
   padding: 5px;
   text-align: center;
-  border-bottom: 1px solid rgba(9, 9, 9, 0.3);
 }
 
 table tr td .title {
@@ -52,6 +51,7 @@ table tr td .title {
   color:blue;
 }
 
+li{list-style:none}
 
 a {
   text-decoration: none;

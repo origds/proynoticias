@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
   get 'home/index'
 
+  devise_for :users
   resources :users
 
+  get "reports/approve"
+  get "reports/publish"
+  get "reports/not_viewed"
+  get "reports/viewed"
+  get "reports/not_sent"
+  get "reports/not_published"
+  get "reports/my_reports"
+  get "reports/aprobadas"
   resources :reports
 
   # The priority is based upon order of creation: first created -> highest priority.
