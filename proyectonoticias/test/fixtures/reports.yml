@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 
+  content: 
+  source: 
+  user_id: 
+  author: 
+  viewed: 
+  approved: 
+  sent: 
+  published: false
+
+two:
+  title: 
+  content: 
+  source: 
+  user_id: 
+  author: 
+  viewed: 
+  approved: 
+  sent: 
+  published: false
