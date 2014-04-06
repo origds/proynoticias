@@ -5,8 +5,9 @@
     <tr>
       <th style="width:700px">Titulo</th>
       <th>Usuario</th>
+      <th>Vista</th>
       <th>Ver</th>
-      <% if current_user.role == "Admin" %>
+      <% if current_user.role == "admin" %>
       <th>Editar</th>
       <th>Eliminar</th>
       <% end %>
@@ -18,10 +19,17 @@
     <tr>
       <td><%= report.title %></td>
       <td><%= User.find(report.user_id).email %></td>
+      <td>
+        <% if report.viewed == false %>
+          <span style="color:red">No</span>
+          <% else %>
+          <span style="color:green">Si</span>
+        <% end %>
+      </td>
       <td><%= link_to '◉', report %></td>
-      <% if current_user.role == "Admin" %>      
+      <% if current_user.role == "admin" %>      
       <td><%= link_to '✎', edit_report_path(report) %></td>
-      <td><%= link_to 'X', report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
+      <td><%= link_to 'X', report, method: :delete, data: { confirm: '¿Seguro desea eliminar la noticia?'} %>
       <% end %>
     </tr>
     <% end %>
