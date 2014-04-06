@@ -47,7 +47,7 @@ class ReportsController < ApplicationController
     @report.sent = false;
     @report.published = false;
     
-    if current_user.role == "Normal"
+    if current_user.role == "normal"
       @report.approved = false;
     else
       @report.approved = true;
@@ -136,9 +136,9 @@ class ReportsController < ApplicationController
     end
   end
 
-    #Para obtener las noticias que no han sido vistas
+  #Para obtener las noticias que no han sido vistas
   def not_viewed
-    @reports = Report.where(:viewed => false)
+    @reports = Report.where(:approved => false)
 
     respond_to do |format|
       format.html

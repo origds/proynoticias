@@ -32,6 +32,25 @@
   text-align: center;
 }
 
+.not_signed_in {
+ width:70%;
+ height:500px;
+ margin:auto;
+ border: 2px solid black;
+ margin-top: 10%;
+ border-radius:20px;
+}
+
+.not_signed_in_header {
+  height:17%;
+  background: #5294aa;
+  border-radius:20px 20px 0px 0px;
+  text-align: center;
+  padding-left:7%;
+  padding-top: 2%;
+  color:white;
+}
+
 table {
   width:1000px;
   margin:auto;

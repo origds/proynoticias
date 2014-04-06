@@ -8,46 +8,53 @@
 </head>
 <body>
 
-  <div class="header">
-    <h1 style="font-style:italic;float:left;margin-left: 30px;"> Sistema de Noticias del Departamento de Computacion	</h1>
-    <% if user_signed_in? %>
-    <h3 style="float:right;">Bienvenido <%= current_user.email %></h3>
+	<% if user_signed_in? %>
+	<div class="header">
+		<h1 style="font-style:italic;float:left;margin-left: 30px;"> Sistema de Noticias del Departamento de Computación	</h1>
+		<h3 style="float:right;">Bienvenido <%= current_user.email %></h3>
 
 
-    <div style="width:850px; float:left">
-      <ul>
-        <li><a href="../reports/my_reports">Mis Noticias</a></li>
-        <li><a href="../reports">Listas</a></li>
-        <li><a href="../reports/not_viewed">Nuevas 
-          <% x = Report.where(:viewed => false).count() %>
-          <% if x != 0 %>
-            <div style="color:green;float:right">(<%= x %>)</div>
-          <% end %>
-        </a></li>
-        <li><a href="../reports/viewed">Por Aprobar</a></li>
-        <% if current_user.role == "admin" %>
-        <li><a href="../reports/not_sent">Por Enviar</a></li>
-        <li><a href="../reports/not_published">Por Publicar</a></li>
-        <li style="margin-left: 50px;"><a href="../users">Usuarios</a></li>
-        <% else %>
-        <li><a href="../reports/aprobadas">Aprobadas</a></li>
-        <% end %>
-      </ul>      
-      
-    </div>
+		<div style="width:850px; float:left">
+			<ul>
+				<li><a href="../reports/my_reports">Mis Noticias</a></li>
+				<li><a href="../reports">Noticias Listas</a></li>
+				<li><a href="../reports/not_viewed">Por Aprobar 
+					<% x = Report.where(:viewed => false).count() %>
+					<% if x != 0 %>
+					<div style="color:green;float:right">(<%= x %>)</div>
+					<% end %>
+				</a></li>
+				<% if current_user.role == "admin" %>
+				<li><a href="../reports/not_sent">Por Enviar</a></li>
+				<li><a href="../reports/not_published">Por Publicar</a></li>
+				<li style="margin-left: 50px;"><a href="../users">Usuarios</a></li>
+				<% else %>
+				<li><a href="../reports/aprobadas">Aprobadas</a></li>
+				<% end %>
+			</ul>      
 
-    <div style="float:right;">
-      <ul>
-        <li style="margin-right: 20px;"><%= link_to 'Nueva Noticia', new_report_path %></li>
-        <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, :method => :delete %></li>
-      </ul>
-    </div>
-    <% end %>
+		</div>
+
+		<div style="float:right;">
+			<ul>
+				<li style="margin-right: 20px;"><%= link_to 'Nueva Noticia', new_report_path %></li>
+				<li><%= link_to 'Cerrar Sesión', destroy_user_session_path, :method => :delete %></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="content">
+	</div>
+	<% else %>
+
+	<div class="not_signed_in">
+  <div class="not_signed_in_header">
+    <h1 style="font-style:italic;float:left;"> Sistema de Noticias del Departamento de Computación  </h1>
   </div>
 
-  <div class="content">
-    <%= yield %>
-  </div>
+		<%= yield %>
+	</div>
+	<% end %>
 
 </body>
 </html>
