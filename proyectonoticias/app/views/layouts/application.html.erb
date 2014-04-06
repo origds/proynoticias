@@ -44,15 +44,16 @@
 	</div>
 
 	<div class="content">
-	</div>
-	<% else %>
+		<%= yield %>
+  </div>
+  <% else %>
 
-	<div class="not_signed_in">
+  <div class="not_signed_in">
   <div class="not_signed_in_header">
     <h1 style="font-style:italic;float:left;"> Sistema de Noticias del Departamento de Computación  </h1>
   </div>
 
-		<%= yield %>
+    <%= yield %>
 	</div>
 	<% end %>
 
