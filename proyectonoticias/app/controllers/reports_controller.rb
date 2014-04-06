@@ -57,7 +57,6 @@ class ReportsController < ApplicationController
     @report.author = current_user.email;
     respond_to do |format|
       if @report.save
-        Notifier.report_notify(current_user).deliver
         format.html { redirect_to @report, notice: 'Noticia creada exitosamente.' }
         format.json { render action: 'show', status: :created, location: @report }
       else

@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+ .content-container {
+  min-height: 600px;
+}
+
 .header {
   height:100px;
   padding: 0 60px;

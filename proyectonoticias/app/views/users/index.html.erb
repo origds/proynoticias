@@ -1,31 +1,33 @@
-<h1>Lista de Usuarios</h1>
+<div class ="titulos" >
+  <h1>Lista de Usuarios</h1>
+</div>
 
-<ul style="margin-left: 77%;margin-bottom: 30px;">
-  <li>
-    <%= link_to 'Nuevo Usuario', new_user_path %>
-  </li>
-</ul>
+<div class="span10" style="margin-top:20px;">
+  <ul style="margin-left: 77%;margin-bottom: 30px;">
+      <%= link_to 'Nuevo Usuario', new_user_path, :class => "btn btn-default" %>
+  </ul>
 
-<table style="width:800px">
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Role</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <table style="width:600px">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= user.email %></td>
-      <td><%= user.role %></td>
-      <td><%= link_to '◉', user %></td>
-      <td><%= link_to '✎', edit_user_path(user) %></td>
-      <td><%= link_to 'X', user, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td><%= link_to glyph(:eye_open), user %></td>
+        <td><%= link_to glyph(:pencil), edit_user_path(user) %></td>
+        <td><%= link_to glyph(:remove), user, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

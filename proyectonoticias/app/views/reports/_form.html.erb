@@ -1,32 +1,42 @@
-<div style="margin-left: 22%;">
-  <%= form_for(@report) do |f| %>
-  <% if @report.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+<%= semantic_form_for @report do |f| %>
 
-    <ul>
-      <% @report.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+<div class="span10">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :título %>
+            <%= f.text_field :title%>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :fuente %>
+            <%= f.text_field :source%>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"> 
+          <div class="field">
+            <%= f.label :contenido %>
+            <%= f.text_area :content, :rows => "5", :cols => "3" %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="field">
-    <%= f.label :titulo %><br>
-    <%= f.text_field :title %>
+  <div id="boton" class = "btn-group">
+    <%= f.action :submit, :button_html => {:class => "btn btn-default"},:label => "Agregar" %>
+    <%=link_to 'Volver', :back, :class => "btn btn-default"%>
   </div>
-  <div class="field">
-    <%= f.label :contenido %><br>
-    <%= f.text_area :content, :rows => "20", :cols => "80" %>
-  </div>
-  <div class="field">
-    <%= f.label :fuente %><br>
-    <%= f.text_field :source%>
-  </div>
-  
-  <div>
-    <%= f.submit "Actualizar"%>
-  </div>
-  <% end %>
+
+  <br>
+  <br>
+
 </div>
+<div class="span2"></div>
+
+<% end %>

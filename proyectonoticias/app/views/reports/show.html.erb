@@ -1,77 +1,82 @@
-<div style="margin-left:30%">
-  <p id="notice"><%= notice %></p>
+<div class="span3"></div>
+<div class="span5">
+  <div class="page-header" style="margin-top:100px">
+    <h2><%= @report.title %></h2>
+    <div class="btn-group" style="margin-top:-40px; float:right;">
+      <%= link_to 'Editar', edit_report_path(@report), :class => "btn btn-default" %>
+      <%= link_to 'Volver', reports_my_reports_path, :class => "btn btn-default" %>
+    </div>
+  </div>
+  <div class="media">
+    <div class="media-body">
+      <ul style="list-style:none;">
+        <li>
+        <!--<p id="notice"><%= notice %></p>-->
 
-  <p>
-    <strong>Titulo:</strong>
-    <%= @report.title %>
-  </p>
+        <p>
+          <strong>Contenido:</strong>
+          <%= @report.content %>
+        </p>
 
-  <p>
-    <strong>Contenido:</strong>
-    <%= @report.content %>
-  </p>
+        <p>
+          <strong>Fuente:</strong>
+          <%= @report.source %>
+        </p>
 
-  <p>
-    <strong>Fuente:</strong>
-    <%= @report.source %>
-  </p>
+        <p>
+          <strong>Usuario:</strong>
+          <%= @report.user_id %>
+        </p>
 
-  <p>
-    <strong>Usuario:</strong>
-    <%= @report.user_id %>
-  </p>
+        <p>
+          <strong>Autor:</strong>
+          <%= @report.author %>
+        </p>
 
-  <p>
-    <strong>Autor:</strong>
-    <%= @report.author %>
-  </p>
+        <% if current_user.role == 'admin'  || current_user.id == @report.user_id %>
+        <p>
+          <strong>Visto:</strong>
+          <%= @report.viewed %>
+        </p>
 
-  <% if current_user.role == 'admin'  || current_user.id == @report.user_id %>
-  <p>
-    <strong>Visto:</strong>
-    <%= @report.viewed %>
-  </p>
+        <p>
+          <strong>Aprobado:</strong>
+          <%= @report.approved %>
+        </p>
 
-  <p>
-    <strong>Aprobado:</strong>
-    <%= @report.approved %>
-  </p>
+        <p>
+          <strong>Publicada:</strong>
+          <%= @report.published %>
+        </p>
 
-  <p>
-    <strong>Publicada:</strong>
-    <%= @report.published %>
-  </p>
+        <p>
+          <strong>Enviada:</strong>
+          <%= @report.sent %>
+        </p>
+        <% end %>
+        </li>
+      </ul>
 
-  <p>
-    <strong>Enviada:</strong>
-    <%= @report.sent %>
-  </p>
-  <% end %>
+      <% if current_user.role == 'admin' %>
 
-  <ul>
-    <% if current_user.role == 'admin' %>
+        <!-- Marcada como aprobada/desaprobada la noticia -->
+        <% if @report.sent == false && @report.published == false %>
+        <% if @report.approved == false %>
+          <%= link_to 'Aprobar', reports_approve_path(:id => @report.id) , :class => "btn btn-default" %>
+        <% else %>
+          <%= link_to 'Denegar', reports_approve_path(:id => @report.id) , :class => "btn btn-default" %>
+        <% end %>
+        <% end %>
 
-    <!-- Marcada como aprobada/desaprobada la noticia -->
-    <% if @report.sent == false && @report.published == false %>
-    <% if @report.approved == false %>
-    <li><%= link_to 'Aprobar', reports_approve_path(:id => @report.id) , :class => "boton" %></li>
-    <% else %>
-    <li><%= link_to 'Denegar', reports_approve_path(:id => @report.id) , :class => "boton" %></li>
-    <% end %>
-    <% end %>
+        <!-- Marcar como publicada/no publicada la noticia-->
+        <% if @report.approved == true && @report.published == false %>
+          <%= link_to 'Publicar', reports_publish_path(:id => @report.id) , :class => "btn btn-default" %>
+        <% elsif @report.approved == true && @report.published == true %>
+          <%= link_to 'No Publicar', reports_publish_path(:id => @report.id) , :class => "btn btn-default" %>
+        <% end %>
 
-    <!-- Marcar como publicada/no publicada la noticia-->
-    <% if @report.approved == true && @report.published == false %>
-    <li style="color:blue"><%= link_to 'Publicar', reports_publish_path(:id => @report.id) , :class => "boton" %></li>
-    <% elsif @report.approved == true && @report.published == true %>
-    <li><%= link_to 'No Publicar', reports_publish_path(:id => @report.id) , :class => "boton" %></li>
-    <% end %>
-
-    <% end %>
-
-    <% if @report.user_id == current_user.id %>
-    <li><%= link_to 'Editar', edit_report_path(@report), :class => "boton" %></li>
-    <% end%>
-    <li><%= link_to 'Volver', reports_my_reports_path, :class => "boton" %></li>
-  </ul>
+      <% end %>
+    </div>
+  </div>
 </div>
+<div class="span4"></div>

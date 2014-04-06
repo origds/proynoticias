@@ -1,22 +1,27 @@
-<h1>Aprobadas</h1>
+<div class ="titulos" >
+  <h1>Aprobadas</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th style="width:700px">Titulo</th>
-      <th>Usuario</th>
-      <th>Ver</th>
-    </tr>
-  </thead>
+<div class="span10" style="margin-top:20px;">
 
-  <tbody>
-    <% @reports.each do |report| %>
-    <tr>
-      <td><%= report.title %></td>
-      <td><%= User.find(report.user_id).email %></td>
-      <td><%= link_to '◉', report %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+  <table style="width:800px">
+    <thead>
+      <tr>
+        <th style="width:500px">Título</th>
+        <th>Usuario</th>
+        <th>Ver</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.title %></td>
+        <td><%= User.find(report.user_id).email %></td>
+        <td><%= link_to glyph(:eye_open), report %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
