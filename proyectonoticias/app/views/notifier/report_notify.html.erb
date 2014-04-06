@@ -1,0 +1,20 @@
+<h1>Boletin Informativo</h1>
+
+<p>Tienes nuevas noticias para leer</p>
+
+<table style="width:600px;margin:auto">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
