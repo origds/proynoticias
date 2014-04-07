@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ProyectoNoticias</title>
-	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	<%= csrf_meta_tags %>
+  <title>ProyectoNoticias</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
 
-	<% if user_signed_in? %>
-	<div class="header">
-		<h1 class ="titulopag"> Sistema de Noticias del Departamento de Computación	</h1>
-		<h4 class ="titulo" style="margin-top: 40px;">Bienvenido <%= current_user.email %></h3>
+  <% if user_signed_in? %>
+  <div id="wrap">
+    <div class="header">
+      <h1 class ="titulopag"> Sistema de Noticias del Departamento de Computación </h1>
+      <h4 class ="titulo" style="margin-top: 40px;">Bienvenido <%= current_user.email %></h3>
 
-  <div class="menu" style="width:100%">
-		<div class="menu1">
-			<div id="boton" class = "btn-group">
-    		<%=link_to 'Mis Noticias', reports_my_reports_path, :class => "btn btn-default"%>
-				<%=link_to 'Ver Noticias', reports_path, :class => "btn btn-default"%>
-        <%= x = Report.where(:viewed => false).count() %>
-        <% if x != 0 %>
-          <%= link_to 'Por Aprobar '+'('+x.to_s+')', reports_not_viewed_path, :class => "btn btn-default"%>  
-        <% else %> 
-          <%= link_to 'Por Aprobar', reports_not_viewed_path, :class => "btn btn-default"%>  
-        <% end %>
-				<% if current_user.role == "admin" %>
-    		<%=link_to 'Por Enviar', reports_not_sent_path, :class => "btn btn-default"%>
-    		<%=link_to 'Por Publicar', reports_not_published_path, :class => "btn btn-default"%>
-    		<%=link_to 'Usuarios', users_path, :class => "btn btn-default"%>
-    		<% else %>
-    		<%=link_to 'Aprobadas', reports_aprobadas_path, :class => "btn btn-default"%>
-    		<% end %>
-    	</div>
-    </div>	
-		<div class ="menu2">
-			<div id="boton" class = "btn-group">
-				<%= link_to 'Nueva Noticia', new_report_path, :class => "btn btn-default" %>
-				<%= link_to 'Cerrar Sesión', destroy_user_session_path, :method => :delete, :class => "btn btn-default" %>
-			</div>
-		</div>
+        <div class="menu" style="width:100%">
+          <div class="menu1">
+           <div id="boton" class = "btn-group">
+            <%=link_to 'Mis Noticias', reports_my_reports_path, :class => "btn btn-default"%>
+            <%=link_to 'Ver Noticias', reports_path, :class => "btn btn-default"%>
+            <%= x = Report.where(:viewed => false).count() %>
+            <% if x != 0 %>
+            <%= link_to 'Por Aprobar '+'('+x.to_s+')', reports_not_viewed_path, :class => "btn btn-default"%>  
+            <% else %> 
+            <%= link_to 'Por Aprobar', reports_not_viewed_path, :class => "btn btn-default"%>  
+            <% end %>
+            <% if current_user.role == "admin" %>
+            <%=link_to 'Por Enviar', reports_not_sent_path, :class => "btn btn-default"%>
+            <%=link_to 'Por Publicar', reports_not_published_path, :class => "btn btn-default"%>
+            <% else %>
+            <%=link_to 'Aprobadas', reports_aprobadas_path, :class => "btn btn-default"%>
+            <% end %>
+          </div>
+          <%=link_to 'Usuarios', users_path, :class => "btn btn-default"%>
+        </div>  
+        <div class ="menu2">
+         <div id="boton">
+          <%= link_to 'Nueva Noticia', new_report_path, :class => "btn btn-default" %>
+          <%= link_to 'Cerrar Sesión', destroy_user_session_path, :method => :delete, :class => "btn btn-default" %>
+        </div>
+      </div>
     </div>
   </div>
 
-
-	<div class="content">
-		<%= yield %>
+  <div id="main">
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
-  <% else %>
 
-  <div class="not_signed_in">
+</div>
+<div id="footer">
+  Derechos reservados: Alberto Cols, Oriana Gómez.
+</div>
+<% else %>
+
+<div class="not_signed_in">
+
   <div class="not_signed_in_header">
     <h1 style="font-style:italic;float:left;"> Sistema de Noticias del Departamento de Computación  </h1>
   </div>
-
-    <%= yield %>
-	</div>
-	<% end %>
+  <%= yield %>
+</div>
+<% end %>
 
 </body>
 </html>
+
+
+

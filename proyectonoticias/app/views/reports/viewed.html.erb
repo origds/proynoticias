@@ -2,15 +2,15 @@
   <h1>Noticias Por Aprobar</h1>
 </div>
 
-<div class="span10" style="margin-top:20px;">
+<div class="span12" style="margin-top:20px;">
 
   <table style="width:800px">
     <thead>
       <tr>
-        <th style="width:500px">Titulo</th>
+        <th style="width:500px">Título</th>
         <th>Usuario</th>
         <th>Ver</th>
-        <% if current_user.role == "Admin" %>
+        <% if current_user.role == "admin" %>
         <th>Editar</th>
         <th>Eliminar</th>
         <% end %>
@@ -24,7 +24,7 @@
         <td><%= report.title %></td>
         <td><%= User.find(report.user_id).email %></td>
         <td><%= link_to glyph(:eye_open), report %></td>
-        <% if current_user.role == "Admin" %>
+        <% if current_user.role == "admin" %>
         <td><%= link_to glyph(:pencil), edit_report_path(report) %></td>
         <td><%= link_to glyph(:remove), report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
         <% end %>
