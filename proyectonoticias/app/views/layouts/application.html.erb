@@ -11,8 +11,9 @@
 	<% if user_signed_in? %>
 	<div class="header">
 		<h1 class ="titulopag"> Sistema de Noticias del Departamento de Computación	</h1>
-		<h3 class = "titulo">Bienvenido <%= current_user.email %></h3>
+		<h4 class ="titulo" style="margin-top: 40px;">Bienvenido <%= current_user.email %></h3>
 
+  <div class="menu" style="width:100%">
 		<div class="menu1">
 			<div id="boton" class = "btn-group">
     		<%=link_to 'Mis Noticias', '../reports/my_reports', :class => "btn btn-default"%>
@@ -32,14 +33,15 @@
     		<% end %>
     	</div>
     </div>	
-  </div>
-
 		<div class ="menu2">
 			<div id="boton" class = "btn-group">
 				<%= link_to 'Nueva Noticia', new_report_path, :class => "btn btn-default" %>
 				<%= link_to 'Cerrar Sesión', destroy_user_session_path, :method => :delete, :class => "btn btn-default" %>
 			</div>
 		</div>
+    </div>
+  </div>
+
 
 	<div class="content">
 		<%= yield %>
