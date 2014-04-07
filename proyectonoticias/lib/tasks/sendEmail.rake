@@ -8,5 +8,11 @@ namespace :email do
     for usu in @user do
       Notifier.report_notify(usu).deliver    
     end
+
+    @reports = Report.where(:sent => false)
+    for r in @reports do
+        r.update_attribute("sent", true)
+    end
+
   end
 end
