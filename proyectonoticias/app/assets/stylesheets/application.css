@@ -12,6 +12,7 @@
  *= require_tree .
  */
 
+
  .content-container {
   min-height: 600px;
 }
@@ -112,7 +113,7 @@ li a {
 }
 
 .actions {
-    border:1px solid black;
+  border:1px solid black;
   font-weight: bold;
   text-align: center;
   display:block;
