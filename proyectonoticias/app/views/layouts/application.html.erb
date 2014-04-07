@@ -16,20 +16,20 @@
   <div class="menu" style="width:100%">
 		<div class="menu1">
 			<div id="boton" class = "btn-group">
-    		<%=link_to 'Mis Noticias', '../reports/my_reports', :class => "btn btn-default"%>
-				<%=link_to 'Ver Noticias', '../reports', :class => "btn btn-default"%>
+    		<%=link_to 'Mis Noticias', reports_my_reports_path, :class => "btn btn-default"%>
+				<%=link_to 'Ver Noticias', reports_path, :class => "btn btn-default"%>
         <%= x = Report.where(:viewed => false).count() %>
         <% if x != 0 %>
-          <%= link_to 'Por Aprobar '+'('+x.to_s+')', '../reports/not_viewed', :class => "btn btn-default"%>  
+          <%= link_to 'Por Aprobar '+'('+x.to_s+')', reports_not_viewed_path, :class => "btn btn-default"%>  
         <% else %> 
-          <%= link_to 'Por Aprobar', '../reports/not_viewed', :class => "btn btn-default"%>  
+          <%= link_to 'Por Aprobar', reports_not_viewed_path, :class => "btn btn-default"%>  
         <% end %>
 				<% if current_user.role == "admin" %>
-    		<%=link_to 'Por Enviar', '../reports/not_sent', :class => "btn btn-default"%>
-    		<%=link_to 'Por Publicar', '../reports/not_published', :class => "btn btn-default"%>
-    		<%=link_to 'Usuarios', '../users', :class => "btn btn-default"%>
+    		<%=link_to 'Por Enviar', reports_not_sent_path, :class => "btn btn-default"%>
+    		<%=link_to 'Por Publicar', reports_not_published_path, :class => "btn btn-default"%>
+    		<%=link_to 'Usuarios', users_path, :class => "btn btn-default"%>
     		<% else %>
-    		<%=link_to 'Aprobadas', '../reports/aprobadas', :class => "btn btn-default"%>
+    		<%=link_to 'Aprobadas', reports_aprobadas_path, :class => "btn btn-default"%>
     		<% end %>
     	</div>
     </div>	
