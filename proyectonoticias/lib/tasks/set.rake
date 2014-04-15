@@ -3,19 +3,21 @@ namespace :set do
   task :users => :environment do
 		Rake::Task['db:reset'].invoke
 		puts 'Creado admin@a.a' unless not User.create(
-			:email						=>	"admin@a.a",
-			:password					=>	"12345678",
-			:role						=>	"admin"
+			:login		=>	"09-10177",
+			:email		=>	"09-10177@ldc.usb.vePRUEBA",
+			:role		=>	"admin"
 			)
 		puts 'Creado privi@p.p' unless not User.create(
-			:email						=>	"privi@p.p",
-			:password					=>	"12345678",
-			:role						=>	"privileged"
+			:login		=> 'privi',
+			:email		=>	"privi@p.p",
+			:password	=>	"12345678",
+			:role		=>	"privileged"
 			)
 		puts 'Creado norma@n.n' unless not User.create(
-			:email						=>	"norma@n.n",
-			:password					=>	"12345678",
-			:role						=>	"normal"
+			:login		=> 'norma',
+			:email		=>	"norma@n.n",
+			:password	=>	"12345678",
+			:role		=>	"normal"
 			)
 
   end

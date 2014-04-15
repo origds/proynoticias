@@ -51,6 +51,9 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise_ldap_authenticatable (0.8.1)
+      devise (>= 3.0)
+      net-ldap (>= 0.3.1, < 0.6.0)
     erubis (2.7.0)
     execjs (2.0.2)
     formtastic (2.2.1)
@@ -82,6 +85,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.2)
     multi_json (1.9.2)
+    net-ldap (0.5.1)
     orm_adapter (0.5.0)
     paperclip (3.5.4)
       activemodel (>= 3.0.0)
@@ -166,6 +170,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   devise
+  devise_ldap_authenticatable
   formtastic
   formtastic-bootstrap
   jbuilder (~> 2.0)

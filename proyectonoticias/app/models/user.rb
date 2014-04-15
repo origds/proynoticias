@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+  devise :ldap_authenticatable, :rememberable, :trackable,
+         :authentication_keys => [:login]
+         # :validatable, :recoverable
+         
   has_many :reports
 
   ROLES = %w[admin privileged normal]
