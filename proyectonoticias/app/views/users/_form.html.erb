@@ -1,6 +1,7 @@
 <%= semantic_form_for @user do |f| %>
 
-<div class="span10">
+<div class="span2"></div></div>
+<div class="span8">
   <table class="table">
     <tbody>
       <tr>
@@ -16,6 +17,16 @@
           ['Usuario Normal', 'normal']], :label => false, :include_blank => false  %>
         </td>
       </tr>
+      <tr>
+         <td>
+          <%= f.label "Nombre"%>
+          <%= f.input :name, :label => false %>
+        </td>
+         <td>
+          <%= f.label "Apellido"%>
+          <%= f.input :lastname, :label => false %>
+        </td>
+      </tr>
     </tbody>
   </table>
 
@@ -23,9 +34,6 @@
     <%= f.action :submit, :button_html => {:class => "btn btn-default"},:label => "Agregar" %>
     <%=link_to 'Volver', users_path, :class => "btn btn-default"%>
   </div>
-
-  <br>
-  <br>
 
 </div>
 <div class="span2"></div>
