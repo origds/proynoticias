@@ -4,6 +4,10 @@
 
 <div class="span12" style="margin-top:20px;">
 
+  <% if @reports.count == 0 %>
+  No hay noticias por publicar.
+  <% else %>
+
   <table style="width:800px">
     <thead>
       <tr>
@@ -22,6 +26,7 @@
         <td><%= link_to glyph(:eye_open), report %></td>
         <td><%= link_to glyph(:remove), report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
       </tr>
+      <% end %>
       <% end %>
     </tbody>
   </table>
