@@ -14,6 +14,11 @@
       <tr>
         <td><%= report.title %></td>
       </tr>
+    <% end %>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><b><%= report.title %></b></td>
+      </tr>
       <tr>
         <td><%= report.content %></td>
       </tr>
