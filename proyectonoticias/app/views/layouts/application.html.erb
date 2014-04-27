@@ -52,6 +52,14 @@
     </p>
   </div>
   <% end %>
+      <div class="content">
+    <% if alert %>
+  <div id="deletesuccess" style="text-align:center;">
+    <p class="alert alert-success">
+      <%= alert %>
+    </p>
+  </div>
+  <% end %>
       <%= yield %>
     </div>
   </div>
