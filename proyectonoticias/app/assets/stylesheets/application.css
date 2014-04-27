@@ -14,7 +14,11 @@
 
 
 .content-container {
-  min-height: 600px;
+  min-height: 660px;
+}
+
+.container {
+  max-width: 660px;
 }
 
 .header {
