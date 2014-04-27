@@ -14,6 +14,9 @@ class SessionsController < Devise::SessionsController
     	current_user.save
         flash[:notice] = "Ingresa a tu perfil y completa tus datos."
     end
+    if (Devise::LDAP::Adapter.get_ldap_param(self.login,"gid")) == 45
+       flash[:error] = "No es profesor."
+    end
   end
 
 end
