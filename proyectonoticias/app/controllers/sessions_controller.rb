@@ -12,6 +12,7 @@ class SessionsController < Devise::SessionsController
     	current_user.email = current_user.login + "@ldc.usb.ve"
     	current_user.role = 'normal'
     	current_user.save
+        flash[:notice] = "Ingresa a tu perfil y completa tus datos."
     end
   end
 

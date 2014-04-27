@@ -1,27 +1,29 @@
 namespace :set do
-  desc "Crea 3 usuarios: admin@a.a, privi@p.p, norma@n.n"
+  desc "Crea 4 usuarios: Alberto Cols, Oriana Gomez, Carlos Perez, Edna Ruckhaus"
   task :users => :environment do
 		Rake::Task['db:reset'].invoke
-		puts 'Creado admin@a.a' unless not User.create(
+		puts 'Creado Alberto Cols Admin' unless not User.create(
 			:login		=>	"09-10177",
-			:email		=>	"09-10177@ldc.usb.vePRUEBA",
+			:email		=>	"09-10177@ldc.usb.ve",
 			:role		=>	"admin"
 			)
-		puts 'Creado privi@p.p' unless not User.create(
-			:login		=> 'privi',
-			:email		=>	"privi@p.p",
-			:password	=>	"12345678",
-			:role		=>	"privileged"
+		puts 'Creado Oriana Gomez Admin' unless not User.create(
+			:login		=>	"09-10336",
+			:email		=>	"09-10336@ldc.usb.ve",
+			:role		=>	"admin"
 			)
-		puts 'Creado norma@n.n' unless not User.create(
-			:login		=> 'norma',
-			:email		=>	"norma@n.n",
-			:password	=>	"12345678",
-			:role		=>	"normal"
+		puts 'Creado Carlos Perez Admin' unless not User.create(
+			:login		=> "caperez",
+			:email		=> "caperez@ldc.ubs.ve",
+			:role		=> "admin"
 			)
-
+		puts 'Creado Edna Ruckhaus Admin' unless not User.create(
+			:login		=> "ruckhaus",
+			:email		=> "ruckhaus@ldc.usb.ve",
+			:role		=> "admin"
+			)
   end
 
-  desc "Crea 3 usuarios"
+  desc "Crea 4 usuarios"
   task :database => [:users]
 end

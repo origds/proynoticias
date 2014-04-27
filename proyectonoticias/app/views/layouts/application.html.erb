@@ -45,6 +45,13 @@
 
   <div id="main">
     <div class="content">
+    <% if notice %>
+  <div id="deletesuccess" style="text-align:center;">
+    <p class="alert alert-success">
+      <%= notice %>
+    </p>
+  </div>
+  <% end %>
       <%= yield %>
     </div>
   </div>
