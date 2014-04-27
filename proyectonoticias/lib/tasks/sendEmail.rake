@@ -13,7 +13,7 @@ namespace :email do
       end
 
       for r in @reports do
-          r.update_attribute("sent", true)
+        r.update_attribute("sent", true)
       end
     end
   end

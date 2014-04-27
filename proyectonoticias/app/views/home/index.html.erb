@@ -1,8 +1,8 @@
 <%if user_signed_in? %>
-<h1 style="text-align: center;margin-top: 100px;"> Bienvenido <%= current_user.email %> </h1>
+<h1 style="text-align: center;margin-top: 100px;"> Bienvenido, <%= current_user.name %>. </h1>
 <% else %>
-<h1 style="text-align:center;margin-top: 100px;">Bienvenido</h1>
-<h2 style="text-align:center">inicie sesión para comenzar</h2>
+<h1 style="text-align:center;margin-top: 100px;">¡Bienvenido!</h1>
+<h2 style="text-align:center">Inicie sesión para comenzar.</h2>
 <ul style="margin-left: 45%;">
   <li>
     <%= link_to 'Iniciar Sesión', new_user_session_path, :class => 'btn btn-default' %>

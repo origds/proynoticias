@@ -4,6 +4,9 @@
 
 <div class="span12" style="margin-top:20px;">
 
+<% if @reports.count == 0 %>
+  <p style="center">No ha agregado ninguna noticia.</p>
+<% else %>
   <table style="width:800px">
     <thead>
       <tr>
@@ -51,4 +54,5 @@
        <% end %>
     </tbody>
   </table>
+<% end %>
 </div>

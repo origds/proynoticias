@@ -13,13 +13,13 @@
         <tr>
           <td>
             <p>
-              <strong>Email:</strong>
+              <b>Email</b>
               <%= @user.email %>
             </p>            
           </td>
           <td>
             <p>
-              <strong>Rol:</strong>
+              <strong>Rol</strong>
               <% if @user.role == "admin"%>
               Administrador.
               <% elsif @user.role == "privileged" %>
@@ -29,6 +29,20 @@
               <% else %>
               --
               <% end %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>Nombre</strong>
+              <%= @user.name%>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>Apellido</strong>
+              <%= @user.lastname %>
             </p>
           </td>
         </tr>
@@ -44,7 +58,7 @@
   </div>
   <% end %>
   <% if @reports.count == 0  %>
-  Este usuario no ha creado ninguna noticia.
+    <p>Este usuario no ha creado ninguna noticia.</p>
   <% else %>
   <table style="width:800px">
     <thead>

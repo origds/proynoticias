@@ -13,6 +13,7 @@
     <div class="header">
       <h1 class ="titulopag"> Sistema de Noticias del Departamento de Computación </h1>
       <h4 class ="titulo" style="margin-top: 40px;">Bienvenido <%= current_user.name %></h3>
+        <br><br><br><br><br>
 
         <div class="menu" style="width:100%">
           <div class="menu1">
@@ -66,14 +67,15 @@
 
 </div>
 <div id="footer">
-  Derechos reservados: Alberto Cols, Oriana Gómez.
+  <p>Derechos reservados: Alberto Cols | Oriana Gómez | Universidad Simón Bolívar, 2014.</p>
 </div>
 <% else %>
 
 <div class="not_signed_in">
 
   <div class="not_signed_in_header">
-    <h1 style="font-style:italic;float:left;"> Sistema de Noticias del Departamento de Computación  </h1>
+    <h1 style="font-style:italic;"> Sistema de Noticias del Departamento de Computación </h1>
+    <h3 id="footerhome"> Universidad Simón Bolívar </h3>
   </div>
   <%= yield %>
 </div>
