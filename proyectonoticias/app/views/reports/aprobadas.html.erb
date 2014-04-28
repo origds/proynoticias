@@ -17,8 +17,11 @@
       <% @reports.each do |report| %>
       <tr>
         <td><%= report.title %></td>
-        <td><%= User.find(report.user_id).email %></td>
-        <td><%= link_to glyph(:eye_open), report %></td>
+        <% if User.find(report.user_id).name == "" && User.find(report.user_id).lastname == "" %>
+        <td><%= User.find(report.user_id).login %> </td>
+        <% else %>
+        <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
+        <% end %>        <td><%= link_to glyph(:eye_open), report %></td>
       </tr>
       <% end %>
     </tbody>

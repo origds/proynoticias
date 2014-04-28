@@ -13,7 +13,7 @@
     <thead>
       <tr>
         <th style="width:500px">Título</th>
-        <th>Usuario</th>
+        <th>Autor</th>
         <th>Vista</th>
         <th>Ver</th>
         <% if current_user.role == "admin" %>
@@ -27,7 +27,11 @@
       <% @reports.each do |report| %>
       <tr>
         <td><%= report.title %></td>
-        <td><%= User.find(report.user_id).email %></td>
+        <% if User.find(report.user_id).name == "" && User.find(report.user_id).lastname == "" %>
+        <td><%= User.find(report.user_id).login %> </td>
+        <% else %>
+        <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
+        <% end %>
         <td>
           <% if report.viewed == false %>
           <span style="color:red">No</span>
