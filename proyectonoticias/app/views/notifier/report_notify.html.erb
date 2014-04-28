@@ -7,21 +7,21 @@
 </head>
 <body>
 <h2>Boletin Informativo del Departamento de Computación</h2>
-    <%= Time.now.strftime("%d/%m/%Y") %>
+    Noticias para el <%= Time.now.strftime("%d/%m/%Y") %>:
     <ul>
     <% @reports.each do |report| %>
         <li><%= report.title %></li>
     <% end %>
     </ul>
-      __________________________________________________________________________________________
-    
+      _____________________________________________
+    <br>    
     <% @reports.each do |report| %>
       <h3><%= report.title %></h3>
       <div style="margin-left: 10px;"> 
         <%= report.content %>
       </div>
       <br>
-      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       <br><br><br>    
     <% end %>
   
