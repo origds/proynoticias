@@ -1,28 +1,30 @@
-<h1>Boletin Informativo</h1>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style type="text/css" media="screen">
 
-<p>Tienes nuevas noticias para leer</p>
-
-<table style="width:600px;margin:auto">
-  <thead>
-    <tr>
-      <th>Titulos</th>
-    </tr>
-  </thead>
-
-  <tbody>
+    </style>
+</head>
+<body>
+<h2>Boletin Informativo del Departamento de Computación</h2>
+    <%= Time.now.strftime("%d/%m/%Y") %>
+    <ul>
     <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.title %></td>
-      </tr>
+        <li><%= report.title %></li>
     <% end %>
+    </ul>
+      __________________________________________________________________________________________
+    
     <% @reports.each do |report| %>
-      <tr>
-        <td><b><%= report.title %></b></td>
-      </tr>
-      <tr>
-        <td><%= report.content %></td>
-      </tr>
+      <h3><%= report.title %></h3>
+      <div style="margin-left: 10px;"> 
+        <%= report.content %>
+      </div>
+      <br>
+      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      <br><br><br>    
     <% end %>
-  </tbody>
-</table>
+  
 <br>
+</body>
+</html>

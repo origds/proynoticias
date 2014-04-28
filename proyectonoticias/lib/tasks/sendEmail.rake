@@ -8,8 +8,8 @@ namespace :email do
 
       @user = User.all
 
-      for usu in @user do
-        Notifier.report_notify(usu).deliver    
+      for u in @user do
+        Notifier.report_notify(u).deliver    
       end
 
       for r in @reports do
