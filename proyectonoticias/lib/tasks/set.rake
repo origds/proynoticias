@@ -8,7 +8,7 @@ namespace :set do
 			:role		=>	"admin",
 			:name 		=>	"Alberto",
 			:lastname	=>	"Cols",
-			:gid		=>	45
+			#:gid		=>	45
 			)
 		puts 'Creado Oriana Gomez Admin' unless not User.create(
 			:login		=>	"09-10336",
@@ -16,7 +16,7 @@ namespace :set do
 			:role		=>	"admin",
 			:name 		=>	"Oriana",
 			:lastname	=>	"Gomez",
-			:gid		=>	45
+			#:gid		=>	45
 			)
 		puts 'Creado Carlos Perez Admin' unless not User.create(
 			:login		=> "caperez",
@@ -24,7 +24,7 @@ namespace :set do
 			:role		=> "admin",
 			:name 		=>	"Carlos",
 			:lastname	=>	"Perez",
-			:gid		=>	45
+			#:gid		=>	45
 			)
 		puts 'Creado Edna Ruckhaus Admin' unless not User.create(
 			:login		=> "ruckhaus",
@@ -32,7 +32,7 @@ namespace :set do
 			:role		=> "admin",
 			:name 		=>	"Edna",
 			:lastname	=>	"Ruckhaus",
-			:gid		=>	45			
+			#:gid		=>	45			
 			)
   end
 
