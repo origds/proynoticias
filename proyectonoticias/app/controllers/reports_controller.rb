@@ -107,12 +107,17 @@ class ReportsController < ApplicationController
           format.json { render action: 'show', status: :created, location: @report }
         end
       end
-    else
+    elsif @report.approved == true && @report.sent == false
       if @report.update_attribute('approved', false)
         respond_to do |format|
           format.html { redirect_to @report, notice: 'Noticia rechazada nuevamente.' }
           format.json { render action: 'show', status: :created, location: @report }
         end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @report, alert: 'La noticia no puede ser aprobada/rechazada ya que ya ha sido enviada o publicada.' }
+        format.json { render action: 'show', status: :created, location: @report }
       end
     end
   end
