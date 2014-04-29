@@ -17,9 +17,7 @@
   min-height: 660px;
 }
 
-.container {
-  max-width: 660px;
-}
+
 
 .header {
   height:110px;
@@ -79,9 +77,12 @@ html, body {height: 100%;}
 
 #wrap {min-height: 100%;}
 
-#main {overflow:auto;
+#main {
+  overflow:auto;
   padding-bottom: 40px;
-  text-align: center;}  /* must be same height as the footer */
+  text-align: center;
+  width:100%;
+  }  /* must be same height as the footer */
 
 #footer {
 /*  position: relative;

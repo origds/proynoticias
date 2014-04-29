@@ -1,24 +1,26 @@
 <div class="span2"></div>
-<div class="span8">
+<div class="span8" style="overflow: auto;">
   <div class="page-header">
     <h2>Usuario</h2>
-    <div class="btn-group" style="margin-top:-40px; float:right;">
-      <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-default" %>
-      <%= link_to 'Volver', users_path, :class => "btn btn-default" %>
-    </div>
   </div>
   <div class="media">
     <div class="media-body">
-      <table style="width:600px">
+    <div class="btn-group">
+      <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-default" %>
+      <%= link_to 'Volver', users_path, :class => "btn btn-default" %>
+    </div>
+      <table>
         <tr>
           <td>
-            <p>
+            
               <b>Email</b>
               <%= @user.email %>
-            </p>            
+                        
           </td>
+          </tr>
+          <tr>
           <td>
-            <p>
+            
               <strong>Rol</strong>
               <% if @user.role == "admin"%>
               Administrador.
@@ -29,28 +31,22 @@
               <% else %>
               --
               <% end %>
-            </p>
+            
           </td>
         </tr>
         <tr>
           <td>
-            <p>
+            
               <strong>Nombre</strong>
-              <%= @user.name%>
-            </p>
-          </td>
-          <td>
-            <p>
-              <strong>Apellido</strong>
-              <%= @user.lastname %>
-            </p>
+              <%= @user.name%> <%= @user.lastname %>
+            
           </td>
         </tr>
 
       </table>
       <!--<p id="notice"><%= notice %></p>-->
 
-    </div>
+
   </div>
   <% if current_user.role == "admin" %>
   <div class="page-header">
@@ -85,6 +81,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% end %>
 
 </div>

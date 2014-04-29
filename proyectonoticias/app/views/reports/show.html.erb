@@ -9,6 +9,11 @@
   </div>
   <div class="media">
     <div class="media-body">
+      <% if current_user.role == "admin" %>
+      <spam style="color:gray;font-size:small;float:right">  
+        ** Si la noticia ya fue enviada o publicada no puede ser denegada nuevamente.
+      </spam>
+      <% end %>
       <table>
         <tr>
           <td>
