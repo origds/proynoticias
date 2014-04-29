@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
   roles_attribute :roles_mask 
   roles :admin, :privileged, :normal
 
-  before_save :get_ldap_gid
+  # before_save :get_ldap_gid
   
-  def get_ldap_gid
-    self.gid = Devise::LDAP::Adapter.get_ldap_param(self.login,"gidnumber")
-  end
+  # def get_ldap_gid
+  #   self.gid = Devise::LDAP::Adapter.get_ldap_param(self.login,"gidnumber")
+  # end
 end
