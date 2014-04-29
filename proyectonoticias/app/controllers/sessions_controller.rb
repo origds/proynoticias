@@ -5,7 +5,7 @@ class SessionsController < Devise::SessionsController
     	puts '----------------------------------------'
     	puts 'INICIO DE SESION'
     	puts '----------------------------------------'
-    if ((current_user.login =~ /\A\d{2}\-\d{5}\z/i) and (current_user.login != '09-10177') and (current_user.login != '09-10336'))
+    if ((100 == Devise::LDAP::Adapter.get_ldap_param(current_user.login,"gidnumber")) or ((current_user.login != '09-10177') and (current_user.login != '09-10336')))
         
         flash[:alert] = "Disculpe, no tiene permisos para acceder."
         current_user.destroy
