@@ -1,26 +1,46 @@
 <div class="span2"></div>
-<div class="span8" style="overflow: auto;">
+<div class="span8">
   <div class="page-header">
-    <h2>Usuario</h2>
+    <% if current_user.role == "admin" %>
+      <h2>Usuario <spam style="font-weight:normal;font-size:30px;font-style:italic"> <%= @user.login %> </spam></h2>
+    <% else %>
+      <h2>Mi Perfil</h2>
+    <% end %>
   </div>
   <div class="media">
     <div class="media-body">
-      <table style="width:100%">
+      <table style="width:50%">
+      <% if current_user.role != "admin" %>
         <tr>
           <td>
-            <b>Login</b>
+            <strong>Login</strong>
+          </td>
+          <td>
             <%= @user.login %>
+          </td>
+        </tr>
+        <% end %>
+        <tr>
+          <td>
+            <strong>Nombre</strong>
+            </td>
+            <td>
+            <%= @user.name %> <%= @user.lastname %>
           </td>
         </tr>
         <tr>
           <td>
             <b>Email</b>
+            </td>
+            <td>
             <%= @user.email %>
           </td>
         </tr>
         <tr>
           <td>
             <strong>Rol</strong>
+            </td>
+            <td>
             <% if @user.role == "admin"%>
             Administrador.
             <% elsif @user.role == "privileged" %>
@@ -32,14 +52,8 @@
             <% end %>
           </td>
         </tr>
-        <tr>
-          <td>
-            <strong>Nombre</strong>
-            <%= @user.name %> <%= @user.lastname %>
-          </td>
-        </tr>
       </table>
-      <div class="btn-group">
+      <div class="btn-group" style="margin-top: 20px;margin-bottom: 20px;">
         <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-default" %>
         <%= link_to 'Volver', users_path, :class => "btn btn-default" %>
       </div>
@@ -49,7 +63,6 @@
     <div class="page-header">
       <h2>Noticias del usuario</h2>
     </div>
-    <% end %>
     <% if @reports.count == 0  %>
     <p>Este usuario no ha creado ninguna noticia.</p>
     <% else %>
@@ -78,6 +91,7 @@
       <% end %>
     </tbody>
   </table>
+      <% end %>
 </div>
 <% end %>
 

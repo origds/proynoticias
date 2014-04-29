@@ -45,24 +45,21 @@
   </div>
 
   <div id="main">
-    <div class="content">
-    <% if notice %>
-  <div id="deletesuccess" style="text-align:center;">
-    <p class="alert alert-success">
-      <%= notice %>
-    </p>
-  </div>
-  <% end %>
-      <div class="content">
-    <% if alert %>
-  <div id="deletesuccess" style="text-align:center;">
-    <p class="alert alert-success">
-      <%= alert %>
-    </p>
-  </div>
-  <% end %>
+      <% if notice %>
+      <div id="deletesuccess" style="text-align:center;">
+        <p class="alert alert-success">
+          <%= notice %>
+        </p>
+      </div>
+    <% end %>
+      <% if alert %>
+      <div id="deletesuccess" style="text-align:center;">
+        <p class="alert alert-success">
+          <%= alert %>
+        </p>
+      </div>
+      <% end %>
       <%= yield %>
-    </div>
   </div>
 
 </div>
