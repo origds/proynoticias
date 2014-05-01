@@ -107,7 +107,7 @@ class ReportsController < ApplicationController
           format.json { render action: 'show', status: :created, location: @report }
         end
       end
-    elsif @report.approved == true && @report.sent == false
+    elsif @report.approved == true && @report.sent == false && @report.published == false
       if @report.update_attribute('approved', false)
         respond_to do |format|
           format.html { redirect_to @report, notice: 'Noticia rechazada nuevamente.' }
