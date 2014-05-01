@@ -18,7 +18,7 @@ class SessionsController < Devise::SessionsController
             current_user.email = current_user.login + "@ldc.usb.ve"
             current_user.role = "normal"
             current_user.name = current_user.login
-            current_user.lastname = current_user.login
+            current_user.lastname = ""
             current_user.save
             flash[:notice] = "Por favor, al ser su primer ingreso al sistema, ingresa a su perfil y modifique su Nombre y Apellido."
         end

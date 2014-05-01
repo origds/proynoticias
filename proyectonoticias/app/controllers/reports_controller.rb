@@ -54,7 +54,13 @@ class ReportsController < ApplicationController
     end
 
     @report.user_id = current_user.id;
-    @report.author = current_user.email;
+
+    if current_user.name != ""
+      @report.author = current_user.name + current_user.lastname;
+    else
+      @report.author = current_user.login;
+    end
+    
     respond_to do |format|
       if @report.save
         format.html { redirect_to @report, notice: 'Noticia creada exitosamente.' }
