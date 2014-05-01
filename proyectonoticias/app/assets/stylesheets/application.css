@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap.min
  */
 
 
@@ -75,40 +76,14 @@ and your footer gets pushed down a bit more, creating vertical scroll bars in th
 
 html, body {height: 100%;}
 
+
+
 #wrap {min-height: 100%;}
 
 #main {
   overflow:auto;
-  padding-bottom: 40px;
-  text-align: center;
   width:100%;
   }  /* must be same height as the footer */
-
-#footer {
-/*  position: relative;
-  margin-top: -20px;
-  height: 20px;
-  clear:both;
-  background-color: #5294aa;
-  padding:10px; 
-  text-align: center;
-  font-weight:bold;
-  color:white;
-  margin-top: 20%;*/
-
-  position:fixed;
-  width:100%;
-  left:0px;
-  bottom:0px;
-  height:10px; 
-
-  background-color: #5294aa;
-  padding:10px; 
-  text-align: center;
-  font-weight:bold;
-  color:white;
-
-} 
 
 table {
   width:1000px;
@@ -131,7 +106,7 @@ table tr td .title {
 
 li{list-style:none}
 
-a {
+/*a {
   text-decoration: none;
   color:#159;
 }
@@ -142,9 +117,9 @@ a:visited {
 
 a:hover {
   background:#eee;
-}
+}*/
 
-ul {
+/*ul {
   list-style-type:none;
   margin:0;
   padding:0;
@@ -183,4 +158,4 @@ li a {
   width: auto;
   background-color: white;
   margin: 0 5px;
-}
+}*/
