@@ -2,7 +2,7 @@
 
 <div class="span2"></div>
 <div class="span8">
-  <table class="table">
+  <table class="table" style="width:80%;text-align: center;">
     <tbody>
       <tr>
         <td>
@@ -19,20 +19,25 @@
         </td>
       </tr>
       <tr>
-        <td span="2"> 
+        <td colspan="2"> 
           <div class="field">
             <%= f.label :contenido %>
-            <%= f.text_area :content%>
+            <%= f.text_area :content, :style => "width:80%;height:250px"%>
           </div>
         </td>
       </tr>
+      <tr>
+        <td>
+          <%= f.action :submit, :button_html => {:class => "btn btn-default"},:label => "Enviar" %>
+        </td>
+        <td>
+          <%=link_to 'Volver', :back, :class => "btn btn-default"%>
+        </td>
+      </tr>
+
     </tbody>
   </table>
 
-  <div id="boton" class = "btn-group">
-    <%= f.action :submit, :button_html => {:class => "btn btn-default"},:label => "Enviar" %>
-    <%=link_to 'Volver', :back, :class => "btn btn-default"%>
-  </div>
 
   <br>
   <br>

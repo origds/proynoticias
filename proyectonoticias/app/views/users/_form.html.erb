@@ -2,9 +2,10 @@
 
 <div class="span2"></div></div>
 <div class="span8">
-  <table class="table">
+  <table class="table" style="width:80%;margin:auto;text-align: center;">
     <tbody>
       <tr>
+        <% if current_user.role == "admin" %>
         <td>
           <%= f.label "Correo electrónico"%>
           <%= f.input :email, :label => false %>
@@ -16,6 +17,12 @@
           ['Usuario Privilegiado','privileged'], 
           ['Usuario Normal', 'normal']], :label => false, :include_blank => false  %>
         </td>
+        <% else %>
+          <td colspan=2>
+            <%= f.label "Correo electrónico"%>
+            <%= f.input :email, :label => false %>
+          </td>
+        <% end %>
       </tr>
       <tr>
          <td>
@@ -27,12 +34,18 @@
           <%= f.input :lastname, :label => false %>
         </td>
       </tr>
+      <tr>
+        <td>
+          <%= f.action :submit, :button_html => {:class => "btn btn-default"},:label => "Editar" %>
+        </td>
+        <td>
+          <%=link_to 'Volver', :back, :class => "btn btn-default"%>
+        </td>
+      </tr>
     </tbody>
   </table>
 
   <div id="boton" class = "btn-group">
-    <%= f.action :submit, :button_html => {:class => "btn btn-inverse"},:label => "Agregar" %>
-    <%=link_to 'Volver', :back, :class => "btn btn-default"%>
   </div>
 
 </div>

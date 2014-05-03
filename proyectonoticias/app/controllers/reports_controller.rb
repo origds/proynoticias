@@ -43,20 +43,21 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
-    @report.viewed = false;
     @report.sent = false;
     @report.published = false;
     
     if current_user.role == "normal"
       @report.approved = false;
+      @report.viewed = false;
     else
       @report.approved = true;
+      @report.viewed = true;
     end
 
     @report.user_id = current_user.id;
 
     if current_user.name != ""
-      @report.author = current_user.name + current_user.lastname;
+      @report.author = current_user.name + " " +current_user.lastname;
     else
       @report.author = current_user.login;
     end

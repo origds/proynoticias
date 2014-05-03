@@ -1,55 +1,65 @@
-<div class ="titulos" >
-  <h1>Noticias Nuevas</h1>
-</div>
+<div class="span8">
+  <div class="panel panel-default" style="width:80%;margin:auto">
+    <div class="panel-heading"><h3>Noticias Por Aprobar</h3></div>
+    <% if @reports.count != 0 %>
+    <!-- Table -->
+    <table class="table table-bordered"  style="text-align: center;">
+      <thead>
+        <tr>
+          <th style="width:80%;">Título</th>
+          <th>Autor</th>
+          <th>Vista</th>
+          <th>Ver</th>
+          <% if current_user.role == "admin" %>
+          <th>Editar</th>
+          <th>Eliminar</th>
+          <% end %>
+        </tr>
+      </thead>
 
-<div class="span2"> </div>
-<div class="span8" style="margin-top:20px;">
-
-  <% if @reports.count == 0 %>
-    <p style="center">No hay noticias por aprobar.</p>
-  <% else %>
-
-  <table style="width:800px">
-    <thead>
-      <tr>
-        <th style="width:500px">Título</th>
-        <th>Autor</th>
-        <th>Vista</th>
-        <th>Ver</th>
-        <% if current_user.role == "admin" %>
-        <th>Editar</th>
-        <th>Eliminar</th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.title %></td>
-        <% if User.find(report.user_id).name == "" && User.find(report.user_id).lastname == "" %>
-        <td><%= User.find(report.user_id).login %> </td>
-        <% else %>
-        <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
-        <% end %>
-        <td>
-          <% if report.viewed == false %>
-          <span style="color:red">No</span>
+      <tbody>
+        <% @reports.each do |report| %>
+        <tr style="height:50px !important;overflow:auto">
+          <td><%= report.title %></td>
+          <% if User.find(report.user_id).name == "" && User.find(report.user_id).lastname == "" %>
+          <td><%= User.find(report.user_id).login %> </td>
           <% else %>
-          <span style="color:green">Si</span>
+          <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
           <% end %>
-        </td>
-        <td><%= link_to glyph(:eye_open), report %></td>
-        <% if current_user.role == "admin" %>      
-        <td><%= link_to glyph(:pencil), edit_report_path(report) %></td>
-        <td><%= link_to glyph(:remove), report, method: :delete, data: { confirm: '¿Seguro desea eliminar la noticia?'} %>
-          <% end %>
+          <td>
+            <% if report.viewed == false %>
+            <span style="color:red">No</span>
+            <% else %>
+            <span style="color:green">Si</span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to report do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+            <% end %>
+          </td>
+          <% if current_user.role == "admin" %>
+          <td>
+            <%= link_to edit_user_path(report) do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} do %>
+            <i class="glyphicon glyphicon-remove"></i>
+            <% end %>
+          </td>
         </tr>
         <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
+  <% else %>
+  <div class="panel-body">
+    <p>No hay noticias por aprobar.</p>
+  </div>
+  <% end %>
 
 
-<div class="span2"> </div>
+  <div class="span2"> </div>

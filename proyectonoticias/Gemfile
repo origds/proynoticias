@@ -67,4 +67,3 @@ gem 'paperclip', '~> 3.5'
 # Twitter bootstrap
 gem "less-rails" 
 gem "twitter-bootstrap-rails"
-

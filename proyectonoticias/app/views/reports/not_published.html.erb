@@ -1,17 +1,12 @@
-<div class ="titulos" >
-  <h1>Noticias Sin Publicar</h1>
-</div>
-
-<div class="span12" style="margin-top:20px;">
-
-  <% if @reports.count == 0 %>
-    <p>No hay noticias por publicar.</p>
-  <% else %>
-
-  <table style="width:800px">
+<div class="span8">
+<div class="panel panel-default" style="width:80%;margin:auto">
+  <div class="panel-heading"><h3>Noticias Por Publicar</h3></div>
+  <% if @reports.count != 0 %>
+  <!-- Table -->
+  <table class="table table-bordered"  style="text-align: center;">
     <thead>
       <tr>
-        <th style="width:500px">Título</th>
+        <th style="width:80%;">Título</th>        
         <th>Autor</th>
         <th>Ver</th>
         <th>Eliminar</th>
@@ -21,17 +16,41 @@
     <tbody>
       <% @reports.each do |report| %>
       <tr>
-        <td><%= report.title %></td>
+        <td style="height:50px">
+          <%= report.title %>
+        </td>
         <% if User.find(report.user_id).name == "" && User.find(report.user_id).lastname == "" %>
-        <td><%= User.find(report.user_id).login %> </td>
+        <td style="height:50px">
+          <%= User.find(report.user_id).login %> 
+        </td>
         <% else %>
-        <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
+        <td style="height:50px">
+          <%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %>
+          </td>
         <% end %>
-        <td><%= link_to glyph(:eye_open), report %></td>
-        <td><%= link_to glyph(:remove), report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
-      </tr>
+          <td style="height:50px">
+            <%= link_to report do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+            <% end %>
+          </td>
+          <% if current_user.role == "admin" %>
+        <td style="height:50px">
+          
+            <%= link_to report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} do %>
+            <i class="glyphicon glyphicon-remove"></i>
+            <% end %>
+          </td>
+          <% end %>
+        </tr>
+      </tbody>
       <% end %>
-      <% end %>
-    </tbody>
   </table>
 </div>
+  <% else %>
+  <div class="panel-body">
+    <p>No hay noticias por publicar.</p>
+  </div>
+  <% end %>
+
+
+  <div class="span2"> </div>

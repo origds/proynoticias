@@ -1,47 +1,46 @@
 <div class="span2"></div>
 <div class="span8">
-  <div class="page-header">
-    <% if current_user.role == "admin" %>
-      <h2>Usuario <spam style="font-weight:normal;font-size:30px;font-style:italic"> <%= @user.login %> </spam></h2>
+  <div style="text-align: center;">
+    <% if current_user.id != @user.id %>
+    <h2>Usuario <spam style="font-weight:normal;font-size:30px;font-style:italic"> <%= @user.login %> </spam></h2>
     <% else %>
-      <h2>Mi Perfil</h2>
+    <h2>Mi Perfil</h2>
     <% end %>
   </div>
   <div class="media">
     <div class="media-body">
-      <table style="width:50%">
-      <% if current_user.role != "admin" %>
+      <table class="table" style="width:30%;margin:auto;text-align: center;">
+        <% if current_user.role != "admin" %>
         <tr>
-          <td>
+          <td style="width:50%">
             <strong>Login</strong>
           </td>
           <td>
             <%= @user.login %>
-            ***<%= @user.gid %>***
           </td>
         </tr>
         <% end %>
         <tr>
-          <td>
+          <td style="width:50%">
             <strong>Nombre</strong>
-            </td>
-            <td>
+          </td>
+          <td>
             <%= @user.name %> <%= @user.lastname %>
           </td>
         </tr>
         <tr>
           <td>
             <b>Email</b>
-            </td>
-            <td>
+          </td>
+          <td>
             <%= @user.email %>
           </td>
         </tr>
         <tr>
           <td>
             <strong>Rol</strong>
-            </td>
-            <td>
+          </td>
+          <td>
             <% if @user.role == "admin"%>
             Administrador.
             <% elsif @user.role == "privileged" %>
@@ -53,49 +52,73 @@
             <% end %>
           </td>
         </tr>
+        <tr>
+          <td>
+            <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-default" %>        
+          </td>
+          <td>
+            <%= link_to 'Volver', users_path, :class => "btn btn-default" %>
+          </td>
+        </tr>
       </table>
       <div class="btn-group" style="margin-top: 20px;margin-bottom: 20px;">
-        <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-default" %>
-        <%= link_to 'Volver', users_path, :class => "btn btn-default" %>
       </div>
+    </div>
+    
+    <% if current_user.role == "admin" or current_user.id == @user.id %>
+    <div class="span8">
+      <div class="panel panel-default" style="width:80%;margin:auto;margin-bottom: 50px;">
+        <div class="panel-heading"><h4>Noticias del Usuario</h4></div>
+        <% if @reports.count != 0 %>
+        <!-- Table -->
+        <table class="table table-bordered"  style="text-align: center;">
+          <thead>
+            <tr>
+              <th style="width:80%;">Título</th>
+              <th>Ver</th>
+              <% if current_user.role == "admin" or current_user.id == @user.id %>
+              <th>Editar</th>
+              <th>Eliminar</th>
+              <% end %>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @reports.each do |report| %>
+            <tr style="height:50px !important;overflow:auto">
+              <td><%= report.title %></td>
+              <td>
+                <%= link_to report do %>
+                <i class="glyphicon glyphicon-eye-open"></i>
+                <% end %>
+              </td>
+              <% if current_user.role == "admin" %>
+              <td>
+                <%= link_to edit_user_path(report) do %>
+                <i class="glyphicon glyphicon-pencil"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} do %>
+                <i class="glyphicon glyphicon-remove"></i>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+      <div class="panel-body">
+        <p>El usuario no ha escrito ninguna noticia.</p>
+      </div>
+      <% end %>
+
+
+      <div class="span2"> </div>
+      <% end %>
 
     </div>
-    <% if current_user.role == "admin" %>
-    <div class="page-header">
-      <h2>Noticias del usuario</h2>
-    </div>
-    <% if @reports.count == 0  %>
-    <p>Este usuario no ha creado ninguna noticia.</p>
-    <% else %>
-    <table style="width:800px">
-      <thead>
-        <tr>
-         <th style="width:500px">Título</th>
-         <th>Ver</th>
-         <% if current_user.role == "admin" %>
-         <th>Editar</th>
-         <th>Eliminar</th>
-         <% end %>
-       </tr>
-     </thead>
-
-     <tbody>
-       <% @reports.each do |report| %>
-       <tr>
-        <td><%= report.title %></td>
-        <td><%= link_to glyph(:eye_open), report %></td>
-        <% if current_user.role == "admin" %>
-        <td><%= link_to glyph(:pencil), edit_report_path(report) %></td>
-        <td><%= link_to glyph(:remove), report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
-        <% end %>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-      <% end %>
-</div>
-<% end %>
-
-</div>
-</div>
-<div class="span2"></div>
+  </div>
+  <div class="span2"></div>

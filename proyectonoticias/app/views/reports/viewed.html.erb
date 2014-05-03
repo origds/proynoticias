@@ -27,11 +27,23 @@
         <% else %>
         <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
         <% end %>
-        <td><%= link_to glyph(:eye_open), report %></td>
+        <td>
+          <%= link_to report do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+          <% end %>
+        </td>
         <% if current_user.role == "admin" %>
-        <td><%= link_to glyph(:pencil), edit_report_path(report) %></td>
-        <td><%= link_to glyph(:remove), report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} %></td>
-        <% end %>
+        <td>
+          <%= link_to edit_user_path(report) do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to report, method: :delete, data: { confirm: 'Esta seguro de eliminarla?'} do %>
+            <i class="glyphicon glyphicon-remove"></i>
+          <% end %>
+        </td>
+          <% end %>
       </tr>
       <% end %>
     </tbody>

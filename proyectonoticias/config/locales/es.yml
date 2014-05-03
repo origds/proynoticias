@@ -5,6 +5,7 @@ es:
         not_found_in_database: 'Contraseña o Login incorrecto.'
         invalid: 'Contraseña inválida.'
         unauthenticated: 'Debe iniciar sesión para acceder a esta página.'
+        already_authenticated: 'Ya está conectado/a.'
     user:
       already_authenticated: 'Ya está conectado/a.'
       unauthenticated: ''

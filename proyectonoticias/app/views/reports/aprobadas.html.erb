@@ -21,7 +21,12 @@
         <td><%= User.find(report.user_id).login %> </td>
         <% else %>
         <td><%= User.find(report.user_id).name %> <%= User.find(report.user_id).lastname %></td>
-        <% end %>        <td><%= link_to glyph(:eye_open), report %></td>
+        <% end %>        
+        <td>
+          <%= link_to report do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
