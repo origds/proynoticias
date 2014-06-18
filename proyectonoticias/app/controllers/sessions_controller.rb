@@ -1,3 +1,11 @@
+# F' ugly patch, just for evading compatiblity issues between
+# different versions of net-ldap.
+class Fixnum
+    def first
+        self
+    end
+end
+
 class SessionsController < Devise::SessionsController
 
   def create
@@ -7,7 +15,8 @@ class SessionsController < Devise::SessionsController
     	puts "----------------------------------------"
     
     if current_user.gid == nil
-        current_user.gid = Devise::LDAP::Adapter.get_ldap_param(current_user.login,"gidnumber")
+        data = Devise::LDAP::Adapter.get_ldap_param(current_user.login,"gidnumber")
+        current_user.gid = data.first
     end
 
     if ((45 == current_user.gid) or (current_user.login == "09-10177") or (current_user.login == "09-10336"))
