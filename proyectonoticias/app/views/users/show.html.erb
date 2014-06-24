@@ -92,9 +92,9 @@
                 <i class="glyphicon glyphicon-eye-open"></i>
                 <% end %>
               </td>
-              <% if current_user.role == "admin" %>
+              <% if current_user.role == "admin" || current_user.id = @user.id%>
               <td>
-                <%= link_to edit_user_path(report) do %>
+                <%= link_to edit_report_path(report) do %>
                 <i class="glyphicon glyphicon-pencil"></i>
                 <% end %>
               </td>
