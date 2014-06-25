@@ -8,7 +8,6 @@ namespace :set do
 			:role		=>	"admin",
 			:name 		=>	"Alberto",
 			:lastname	=>	"Cols",
-			#:gid		=>	45
 			)
 		puts 'Creado Oriana Gomez Admin' unless not User.create(
 			:login		=>	"09-10336",
@@ -16,26 +15,33 @@ namespace :set do
 			:role		=>	"admin",
 			:name 		=>	"Oriana",
 			:lastname	=>	"Gomez",
-			#:gid		=>	45
 			)
 		puts 'Creado Carlos Perez Admin' unless not User.create(
 			:login		=> "caperez",
-			:email		=> "caperez@ldc.ubs.ve",
+			#:email		=> "caperez@ldc.usb.ve",
 			:role		=> "admin",
-			:name 		=>	"Carlos",
-			:lastname	=>	"Perez",
-			#:gid		=>	45
 			)
 		puts 'Creado Edna Ruckhaus Admin' unless not User.create(
 			:login		=> "ruckhaus",
-			:email		=> "ruckhaus@ldc.usb.ve",
+			#:email		=> "ruckhaus@ldc.usb.ve",
 			:role		=> "admin",
-			:name 		=>	"Edna",
-			:lastname	=>	"Ruckhaus",
-			#:gid		=>	45			
+			)
+		puts 'Creado Jackney Alba (Secretaria) Admin' unless not User.create(
+			:login		=> "secret-depci",
+			:email		=> "secret-depci@ldc.usb.ve",
+			:role		=> "admin",
+			:name 		=>	"Jackney",
+			:lastname	=>	"Alba",
+			)
+		puts 'Creado Zulay Rodriguez (Secretaria) Admin' unless not User.create(
+			:login		=> "asist-depci",
+			:email		=> "asist-depci@ldc.usb.ve",
+			:role		=> "admin",
+			:name 		=>	"Zulay",
+			:lastname	=>	"Rodriguez",
 			)
   end
 
-  desc "Crea 4 usuarios"
+  desc "Crea 6 usuarios"
   task :database => [:users]
 end

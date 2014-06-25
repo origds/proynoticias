@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: 'danswerusb@gmail.com'
+  default from: 'Sistema de Noticias CI <noticias-ci@ldc.usb.ve>'
 
   def report_notify(user)
     @user = user
